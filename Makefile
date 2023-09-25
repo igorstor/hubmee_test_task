@@ -18,4 +18,5 @@ init:
 	    docker exec "$(DB_CONTAINER_NAME)" bash -c 'mysql -u$(DB_USERNAME) -p$(DB_PASSWORD) --protocol=tcp -h "$(shell docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(DB_CONTAINER_NAME))" -e "CREATE DATABASE IF NOT EXISTS  $(DB_DATABASE);"' && break || sleep 2; \
 	done;
 
-	docker exec -it "app" php artisan migrate --seed
+	docker exec -it "app" php artisan migrate
+	docker exec -it "app" php artisan module:seed

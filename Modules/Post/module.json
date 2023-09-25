@@ -7,5 +7,10 @@
     "providers": [
         "Modules\\Post\\Providers\\PostServiceProvider"
     ],
-    "files": []
+    "files": [],
+    "migration": {
+        "seeds": [
+            "Modules\\Post\\Database\\Seeders\\PostDatabaseSeeder"
+        ]
+    }
 }
